@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+	
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:id="@+id/main"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:paddingStart="10dp"
+		android:paddingEnd="10dp">
+		
+		<com.google.android.material.textfield.TextInputLayout
+			android:id="@+id/layout_search_wiki"
+			style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:hint="@string/search_wiki"
+			app:counterEnabled="true"
+			app:counterMaxLength="20"
+			app:endIconCheckable="true"
+			app:endIconDrawable="@drawable/ic_search"
+			app:endIconMode="custom"
+			app:helperText="@string/search_wiki"
+			app:layout_constraintBottom_toTopOf="@+id/image_view"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent">
+			
+			<com.google.android.material.textfield.TextInputEditText
+				android:id="@+id/et_search_wiki"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:inputType="text" />
+		</com.google.android.material.textfield.TextInputLayout>
+		
+		<ImageView
+			android:id="@+id/image_view"
+			android:layout_width="match_parent"
+			android:layout_height="300dp"
+			android:layout_margin="10dp"
+			android:scaleType="centerCrop"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:srcCompat="@drawable/ic_apod_image_loading_error" />
+		
+	</androidx.constraintlayout.widget.ConstraintLayout>
+	
+	<include
+		android:id="@+id/bottom_sheet"
+		layout="@layout/bottom_sheet_apod" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
