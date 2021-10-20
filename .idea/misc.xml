@@ -5,9 +5,12 @@
       <map>
         <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/drawable/apod_load_error.xml" value="0.3390625" />
         <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/layout/activity_main.xml" value="0.24166666666666667" />
-        <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/layout/fragment_apod.xml" value="0.1" />
+        <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/layout/bottom_sheet_apod.xml" value="0.15704154002026344" />
+        <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/layout/fragment_apod.xml" value="0.22" />
         <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/layout/fragment_apod2.xml" value="0.22" />
         <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/layout/fragment_picture_on_the_day.xml" value="0.24166666666666667" />
+        <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/layout/l.xml" value="0.3203125" />
+        <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/layout/r.xml" value="0.15526849037487336" />
         <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3380208333333333" />
         <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3380208333333333" />
       </map>

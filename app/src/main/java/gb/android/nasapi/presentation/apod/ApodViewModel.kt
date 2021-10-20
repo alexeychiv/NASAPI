@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import gb.android.nasapi.BuildConfig
 import gb.android.nasapi.data.ApodDTO
 import gb.android.nasapi.data.ApodRetrofitImpl
+import getDateDaysBefore
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -16,12 +17,9 @@ class ApodViewModel : ViewModel() {
 
     private val liveDataToObserveMutable: MutableLiveData<ApodState> = MutableLiveData()
     val liveDataToObserve: LiveData<ApodState>
-        get() {
-            requestApod()
-            return liveDataToObserveMutable
-        }
+        get() = liveDataToObserveMutable
 
-    private fun requestApod() {
+    public fun requestApod(daysBefore: Long = 0) {
         liveDataToObserveMutable
             .postValue(ApodState.Loading)
 
@@ -30,7 +28,7 @@ class ApodViewModel : ViewModel() {
         else {
             apodSource
                 .getRetrofitImpl()
-                .getApod(BuildConfig.NASA_API_KEY)
+                .getApodByDate(getDateDaysBefore(daysBefore), BuildConfig.NASA_API_KEY)
                 .enqueue(object : Callback<ApodDTO> {
                     override fun onResponse(call: Call<ApodDTO>, response: Response<ApodDTO>) {
                         if (response.isSuccessful && response.body() != null) {

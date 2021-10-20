@@ -8,7 +8,13 @@ import retrofit2.http.Query
 interface ApodAPI {
 
     @GET("planetary/apod")
-    fun getApod(
+    fun getTodayApod(
+        @Query("api_key") apikey: String
+    ): Call<ApodDTO>
+
+    @GET("planetary/apod")
+    fun getApodByDate(
+        @Query("date") date: String,
         @Query("api_key") apikey: String
     ): Call<ApodDTO>
 }
