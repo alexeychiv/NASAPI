@@ -4,54 +4,56 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import gb.android.nasapi.BuildConfig
-import gb.android.nasapi.data.ApodDTO
-import gb.android.nasapi.data.ApodRetrofitImpl
-import getDateDaysBefore
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import gb.android.nasapi.domain.ApodFragment.ApodDomainDataModel
+import gb.android.nasapi.domain.ApodFragment.GetApodUseCase
+import kotlinx.coroutines.*
+import kotlin.coroutines.CoroutineContext
 
-class ApodViewModel : ViewModel() {
-
-    private val apodSource: ApodRetrofitImpl = ApodRetrofitImpl()
+class ApodViewModel(
+    private val getApodUseCase: GetApodUseCase
+) : ViewModel(), CoroutineScope {
 
     private val liveDataToObserveMutable: MutableLiveData<ApodState> = MutableLiveData()
     val liveDataToObserve: LiveData<ApodState>
         get() = liveDataToObserveMutable
 
+    //=============================================================================================
+    //COROUTINES
+
+    //COROUTINE EXCEPTION HANDLER
+    private val handler = CoroutineExceptionHandler { _, exception ->
+        liveDataToObserveMutable.value = ApodState.Error(Throwable(exception.message))
+    }
+
+    //COROUTINE SCOPE
+    private val job = Job()
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Main + job + handler
+
+    //=============================================================================================
+    //LIFECYCLE EVENTS
+
+    override fun onCleared() {
+        job.cancel()
+        super.onCleared()
+    }
+
+    //=============================================================================================
+
     public fun requestApod(daysBefore: Long = 0) {
-        liveDataToObserveMutable
-            .postValue(ApodState.Loading)
+        liveDataToObserveMutable.value = ApodState.Loading
 
-        if (BuildConfig.NASA_API_KEY.isNullOrBlank())
-            ApodState.Error(Throwable("ERROR: API KEY REQUIRED!"))
-        else {
-            apodSource
-                .getRetrofitImpl()
-                .getApodByDate(getDateDaysBefore(daysBefore), BuildConfig.NASA_API_KEY)
-                .enqueue(object : Callback<ApodDTO> {
-                    override fun onResponse(call: Call<ApodDTO>, response: Response<ApodDTO>) {
-                        if (response.isSuccessful && response.body() != null) {
-                            liveDataToObserveMutable.value =
-                                ApodState.Success(response.body()!!)
-                        } else {
-                            val message = response.message()
-                            if (message.isNullOrEmpty()) {
-                                liveDataToObserveMutable.value =
-                                    ApodState.Error(Throwable("Unidentified error"))
-                            } else {
-                                liveDataToObserveMutable.value =
-                                    ApodState.Error(Throwable(message))
-                            }
-                        }
-                    }
+        if (BuildConfig.NASA_API_KEY.isNullOrBlank()) {
+            liveDataToObserveMutable.value = ApodState.Error(Throwable("ERROR: API KEY REQUIRED!"))
+        } else launch {
+            val apodDomainDataModel: ApodDomainDataModel = getApodUseCase.execute(daysBefore)
 
-                    override fun onFailure(call: Call<ApodDTO>, t: Throwable) {
-                        liveDataToObserveMutable.value =
-                            ApodState.Error(Throwable(t))
-                    }
-                }
-                )
+            if (apodDomainDataModel.mediaType == "image")
+                liveDataToObserveMutable.value =
+                    ApodState.SuccessImage(apodDomainDataModel = apodDomainDataModel)
+            else
+                liveDataToObserveMutable.value =
+                    ApodState.SuccessVideo(apodDomainDataModel = apodDomainDataModel)
         }
     }
 

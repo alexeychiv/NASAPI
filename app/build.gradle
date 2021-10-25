@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId "gb.android.nasapi"
-        minSdk 26
+        minSdk 29
         targetSdk 31
         versionCode 1
         versionName "1.0"
@@ -61,6 +61,10 @@ dependencies {
 
     //AppCompat
     implementation 'androidx.appcompat:appcompat:1.3.1'
+
+    //COROUTINES
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:x.x.x"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:x.x.x"
 
     //Lifecycle and ViewModel
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'

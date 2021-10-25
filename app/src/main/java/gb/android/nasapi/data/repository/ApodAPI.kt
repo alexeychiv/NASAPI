@@ -1,6 +1,6 @@
-package gb.android.nasapi.data
+package gb.android.nasapi.data.repository
 
-import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -8,13 +8,13 @@ import retrofit2.http.Query
 interface ApodAPI {
 
     @GET("planetary/apod")
-    fun getTodayApod(
+    suspend fun getTodayApod(
         @Query("api_key") apikey: String
-    ): Call<ApodDTO>
+    ): Response<ApodData>
 
     @GET("planetary/apod")
-    fun getApodByDate(
+    suspend fun getApodByDate(
         @Query("date") date: String,
         @Query("api_key") apikey: String
-    ): Call<ApodDTO>
+    ): Response<ApodData>
 }

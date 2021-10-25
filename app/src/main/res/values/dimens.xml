@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<dimen name="margin_small">5dp</dimen>
+	<dimen name="margin_average">10dp</dimen>
+	<dimen name="margin_large">15dp</dimen>
+	<dimen name="margin_huge">20dp</dimen>
+	
+	<dimen name="padding_small">5dp</dimen>
+	<dimen name="padding_average">10dp</dimen>
+	<dimen name="padding_large">15dp</dimen>
+	<dimen name="padding_huge">20dp</dimen>
+	
+	
+	<dimen name="Apod_BottomSheet_Line_width">25dp</dimen>
+	<dimen name="Apod_BottomSheet_Line_height">1dp</dimen>
+	
+	
+	<dimen name="textSize_plain">20sp</dimen>
+	<dimen name="textSize_header">25sp</dimen>
+
+
+</resources>

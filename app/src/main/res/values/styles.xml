@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	
+	<style name="Apod_BottomSheet_Container">
+		<item name="android:background">@drawable/rounded_top_corners_bg</item>
+		<item name="android:paddingVertical">@dimen/padding_average</item>
+		<item name="android:layout_marginHorizontal">@dimen/margin_small</item>
+	
+	</style>
+	
+	<style name="Apod_BottomSheet_Line">
+		<item name="android:layout_width">@dimen/Apod_BottomSheet_Line_width</item>
+		<item name="android:layout_height">@dimen/Apod_BottomSheet_Line_height</item>
+		<item name="android:background">@color/gray_dark</item>
+	</style>
+	
+	<style name="Apod_BottomSheet_Header">
+		<item name="android:layout_marginTop">@dimen/margin_average</item>
+		<item name="android:layout_marginBottom">@dimen/margin_average</item>
+		<item name="android:textColor">@color/gray_dark</item>
+		<item name="android:textStyle">bold</item>
+	</style>
+	
+	<style name="Apod_BottomSheet_Explanation">
+		<item name="android:layout_marginHorizontal">@dimen/margin_huge</item>
+	</style>
+
+</resources>

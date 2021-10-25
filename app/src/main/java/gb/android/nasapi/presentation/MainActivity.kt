@@ -2,12 +2,16 @@ package gb.android.nasapi.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import gb.android.nasapi.App
 import gb.android.nasapi.R
 import gb.android.nasapi.presentation.apod.ApodFragment
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        setTheme(App.settings.getThemeId())
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 

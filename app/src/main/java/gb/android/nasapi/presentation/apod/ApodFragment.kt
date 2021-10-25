@@ -1,13 +1,11 @@
 package gb.android.nasapi.presentation.apod
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.constraintlayout.widget.ConstraintLayout
+import android.view.*
+import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import coil.api.load
@@ -15,8 +13,8 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
 import gb.android.nasapi.R
 import gb.android.nasapi.databinding.FragmentApodBinding
-import getDateDaysBefore
-import getTodayDate
+import gb.android.nasapi.presentation.MainActivity
+import gb.android.nasapi.presentation.themes.ThemesFragment
 
 class ApodFragment : Fragment() {
 
@@ -30,8 +28,9 @@ class ApodFragment : Fragment() {
     //===========================================================================================
     // VIEW MODEL
 
-    private val viewModel: ApodViewModel by lazy {
-        ViewModelProvider(this).get(ApodViewModel::class.java)
+    private val viewModel by lazy(LazyThreadSafetyMode.NONE) {
+        ViewModelProvider(this, ApodViewModelFactory())
+            .get(ApodViewModel::class.java)
     }
 
     //===========================================================================================
@@ -56,6 +55,8 @@ class ApodFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupBottomAppBar(view)
+
         setBottomSheetBehavior(binding.bottomSheet.bottomSheetContainer)
 
         viewModel.requestApod()
@@ -68,30 +69,27 @@ class ApodFragment : Fragment() {
                 data = Uri.parse("https://en.wikipedia.org/wiki/${binding.etSearchWiki.text}")
             })
         }
-        
-        binding.chipToggleHd.setOnCheckedChangeListener { compoundButton, b ->
-            if (viewModel.liveDataToObserve.value is ApodState.Success) {
-                val apodState = viewModel.liveDataToObserve.value as ApodState.Success
 
-                if (b)
-                    loadApod(apodState.apodDTO.hdurl)
+        binding.chipToggleHd.setOnCheckedChangeListener { compoundButton, isHdToggled ->
+            if (viewModel.liveDataToObserve.value is ApodState.SuccessImage) {
+                val apodState = viewModel.liveDataToObserve.value as ApodState.SuccessImage
+
+                if (isHdToggled)
+                    loadApod(apodState.apodDomainDataModel.hdurl)
                 else
-                    loadApod(apodState.apodDTO.url)
+                    loadApod(apodState.apodDomainDataModel.url)
             }
         }
 
         binding.chipGroup.setOnCheckedChangeListener { group, checkedId ->
-            when (checkedId){
+            when (checkedId) {
                 R.id.chip_show_today_apod -> {
-                    Log.d("BLAH", "CHECK CHANGE >>>>> TODAY ${getTodayDate()}")
                     viewModel.requestApod()
                 }
                 R.id.chip_show_yesterday_apod -> {
-                    Log.d("BLAH", "CHECK CHANGE >>>>> YESTERDAY ${getDateDaysBefore(1)}")
                     viewModel.requestApod(1)
                 }
                 R.id.chip_show_before_yesterday_apod -> {
-                    Log.d("BLAH", "CHECK CHANGE >>>>> BEFORE YESTERDAY ${getDateDaysBefore(2)}")
                     viewModel.requestApod(2)
                 }
             }
@@ -103,6 +101,35 @@ class ApodFragment : Fragment() {
         _binding = null
     }
 
+    //===========================================================================================
+    // BOTTOM APP BAR
+
+    private fun setupBottomAppBar(view: View) {
+        (activity as MainActivity).setSupportActionBar(view.findViewById(R.id.bottom_app_bar))
+        setHasOptionsMenu(true)
+    }
+
+    //===========================================================================================
+    // BOTTOM APP BAR MENU
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_bottom_bar, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_open_fragment_themes -> {
+                activity?.supportFragmentManager?.beginTransaction()
+                    ?.replace(R.id.fragment_container, ThemesFragment.newInstance())
+                    ?.addToBackStack("")
+                    ?.commit()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
 
     //===========================================================================================
     // RENDER
@@ -110,31 +137,39 @@ class ApodFragment : Fragment() {
     private fun render(apodState: ApodState) {
         when (apodState) {
             is ApodState.Error -> {
+                binding.bottomSheet.bottomSheetContainer.visibility = View.GONE
                 Snackbar
                     .make(
-                        binding.root,
-                        "Error loading picture of the day!",
+                        binding.main,
+                        "${apodState.error.message}",
                         Snackbar.LENGTH_LONG
-                    )
+                    ).show()
             }
             ApodState.Loading -> {
+                binding.bottomSheet.bottomSheetContainer.visibility = View.GONE
                 Snackbar
                     .make(
-                        binding.root,
+                        binding.main,
                         "LOADING....",
                         Snackbar.LENGTH_LONG
-                    )
+                    ).show()
             }
-            is ApodState.Success -> {
-                binding.bottomSheet.bottomSheetDescriptionHeader.text = apodState.apodDTO.title
-                binding.bottomSheet.bottomSheetDescription.text = apodState.apodDTO.explanation
+            is ApodState.SuccessImage -> {
+                binding.bottomSheet.bottomSheetContainer.visibility = View.VISIBLE
+                binding.bottomSheet.bottomSheetDescriptionHeader.text =
+                    apodState.apodDomainDataModel.title
+                binding.bottomSheet.bottomSheetExplanation.text =
+                    apodState.apodDomainDataModel.explanation
 
-                if (!apodState.apodDTO.url.isNullOrBlank()) {
+                if (!apodState.apodDomainDataModel.url.isNullOrBlank()) {
                     if (binding.chipToggleHd.isChecked)
-                        loadApod(apodState.apodDTO.hdurl)
+                        loadApod(apodState.apodDomainDataModel.hdurl)
                     else
-                        loadApod(apodState.apodDTO.url)
+                        loadApod(apodState.apodDomainDataModel.url)
                 }
+            }
+            is ApodState.SuccessVideo -> {
+                // TODO: VideoPlayer
             }
         }
     }
@@ -151,12 +186,12 @@ class ApodFragment : Fragment() {
     //===========================================================================================
     // BOTTOM SHEET
 
-    private lateinit var bottomSheetBehaviour: BottomSheetBehavior<ConstraintLayout>
+    private lateinit var bottomSheetBehaviour: BottomSheetBehavior<LinearLayout>
 
-    private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
+    private fun setBottomSheetBehavior(bottomSheet: LinearLayout) {
         bottomSheetBehaviour = BottomSheetBehavior.from(bottomSheet)
         bottomSheetBehaviour.state = BottomSheetBehavior.STATE_COLLAPSED
 
-        bottomSheetBehaviour.setPeekHeight(binding.bottomAppBar.getHeight() + 90);
+        bottomSheetBehaviour.setPeekHeight(binding.bottomAppBar.getHeight() + 140);
     }
 }
