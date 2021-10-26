@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/fragment_container"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+	
+	<androidx.viewpager.widget.ViewPager
+		android:id="@+id/view_pager"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		app:layout_constraintBottom_toTopOf="@+id/view"
+		app:layout_constraintTop_toTopOf="parent">
+		
+		<com.google.android.material.tabs.TabLayout
+			android:id="@+id/tab_layout"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			app:tabGravity="fill"
+			app:tabRippleColor="?colorPrimary" />
+	
+	</androidx.viewpager.widget.ViewPager>
+	
+	<View
+		android:id="@+id/view"
+		android:layout_width="match_parent"
+		android:layout_height="1dp"
+		android:background="@color/gray_dark"
+		android:layout_marginBottom="@dimen/margin_small"
+		app:layout_constraintBottom_toTopOf="@+id/linearLayout" />
+	
+	<LinearLayout
+		android:id="@+id/linearLayout"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center_horizontal|bottom"
+		android:layout_marginBottom="@dimen/margin_small"
+		android:orientation="horizontal"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="@+id/view"
+		app:layout_constraintStart_toStartOf="parent">
+		
+		<ImageView
+			android:id="@+id/iv_swipe_indicator_earth"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="@dimen/margin_small"
+			android:src="@drawable/swipe_indicator_active" />
+		
+		<ImageView
+			android:id="@+id/iv_swipe_indicator_mars"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="@dimen/margin_small"
+			android:src="@drawable/swipe_indicator_passive" />
+		
+		<ImageView
+			android:id="@+id/iv_swipe_indicator_weather"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="@dimen/margin_small"
+			android:src="@drawable/swipe_indicator_passive" />
+	
+	</LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

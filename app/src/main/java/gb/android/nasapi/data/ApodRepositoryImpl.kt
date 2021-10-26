@@ -3,8 +3,8 @@ package gb.android.nasapi.data
 import gb.android.nasapi.BuildConfig
 import gb.android.nasapi.data.repository.ApodAPI
 import gb.android.nasapi.data.repository.ApodData
-import gb.android.nasapi.domain.ApodFragment.ApodDomainDataModel
-import gb.android.nasapi.domain.ApodFragment.ApodRepository
+import gb.android.nasapi.domain.apod.ApodDomainDataModel
+import gb.android.nasapi.domain.apod.ApodRepository
 
 class ApodRepositoryImpl(
     private val apodAPI: ApodAPI

@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import gb.android.nasapi.BuildConfig
-import gb.android.nasapi.domain.ApodFragment.ApodDomainDataModel
-import gb.android.nasapi.domain.ApodFragment.GetApodUseCase
+import gb.android.nasapi.domain.apod.ApodDomainDataModel
+import gb.android.nasapi.domain.apod.GetApodUseCase
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 

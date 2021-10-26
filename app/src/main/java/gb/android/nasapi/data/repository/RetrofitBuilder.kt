@@ -7,32 +7,36 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-class RetrofitBuilder {
+object RetrofitBuilder {
 
-    private val baseUrl = "https://api.nasa.gov/"
+    private const val baseUrl = "https://api.nasa.gov/"
 
-    fun buildApodApi(): ApodAPI {
-        return Retrofit.Builder()
-            .baseUrl(baseUrl)
-            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
-            .client(createOkHttpClient(/*ApodInterceptor()*/))
-            .build()
-            .create(ApodAPI::class.java)
+    private val retrofit = Retrofit.Builder()
+        .baseUrl(baseUrl)
+        .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
+        .client(
+            OkHttpClient.Builder()
+                .addInterceptor(
+                    HttpLoggingInterceptor()
+                        .setLevel(HttpLoggingInterceptor.Level.BODY)
+                )
+                .build()
+        )
+        .build()
+
+    fun buildApodAPI(): ApodAPI {
+        return retrofit.create(ApodAPI::class.java)
     }
 
-    private fun createOkHttpClient(/*interceptor: Interceptor*/): OkHttpClient {
-        val httpClient = OkHttpClient.Builder()
-        //httpClient.addInterceptor(interceptor)
-        httpClient.addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-        return httpClient.build()
+    fun buildDonkiAPI(): DonkiAPI {
+        return retrofit.create(DonkiAPI::class.java)
     }
 
-    /*class ApodInterceptor : Interceptor {
+    fun buildMarsAPI(): MarsAPI {
+        return retrofit.create(MarsAPI::class.java)
+    }
 
-        @Throws(IOException::class)
-        override fun intercept(chain: Interceptor.Chain): okhttp3.Response {
-            return chain.proceed(chain.request())
-        }
-    }*/
-
+    fun buildEarthAPI(): EarthAPI {
+        return retrofit.create(EarthAPI::class.java)
+    }
 }

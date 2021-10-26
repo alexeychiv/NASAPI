@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+	
+	<com.google.android.material.textview.MaterialTextView
+		android:id="@+id/materialTextView"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="@string/choose_rover"
+		android:layout_marginVertical="@dimen/margin_average"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+	
+	<com.google.android.material.chip.ChipGroup
+		android:id="@+id/chipGroup_mars_rover"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		app:layout_constraintEnd_toEndOf="@+id/materialTextView"
+		app:layout_constraintStart_toStartOf="@+id/materialTextView"
+		app:layout_constraintTop_toBottomOf="@+id/materialTextView"
+		app:selectionRequired="true"
+		app:singleLine="true"
+		app:singleSelection="true">
+		
+		<com.google.android.material.chip.Chip
+			android:id="@+id/chip_mars_rover_curiosity"
+			style="@style/Widget.MaterialComponents.Chip.Choice"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:checked="true"
+			android:text="@string/curiosity" />
+		
+		<com.google.android.material.chip.Chip
+			android:id="@+id/chip_mars_rover_opportunity"
+			style="@style/Widget.MaterialComponents.Chip.Choice"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/opportunity" />
+		
+		<com.google.android.material.chip.Chip
+			android:id="@+id/chip_mars_rover_spirit"
+			style="@style/Widget.MaterialComponents.Chip.Choice"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/spirit" />
+	
+	</com.google.android.material.chip.ChipGroup>
+	
+	<View
+		android:id="@+id/view2"
+		android:layout_width="match_parent"
+		android:layout_height="1dp"
+		android:background="@color/gray_dark"
+		app:layout_constraintTop_toBottomOf="@+id/chipGroup_mars_rover"
+		tools:layout_editor_absoluteX="-16dp" />
+	
+	<androidx.recyclerview.widget.RecyclerView
+		android:id="@+id/rv_mars"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:background="@color/gray_dark"
+		android:paddingHorizontal="@dimen/padding_small"
+		app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/view2"
+		tools:layout_editor_absoluteX="167dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

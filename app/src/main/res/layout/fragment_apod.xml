@@ -5,39 +5,10 @@
 	android:layout_height="match_parent">
 	
 	<androidx.coordinatorlayout.widget.CoordinatorLayout
-		android:id="@+id/coordinator_bottom"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		app:layout_constraintBottom_toBottomOf="parent">
-		
-		<com.google.android.material.bottomappbar.BottomAppBar
-			android:id="@+id/bottom_app_bar"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:layout_gravity="bottom"
-			app:backgroundTint="?colorPrimary"
-			app:fabAlignmentMode="center"
-			app:hideOnScroll="true"
-			app:layout_constraintBottom_toBottomOf="parent"
-			app:layout_scrollFlags="scroll|enterAlways">
-			
-			<com.google.android.material.textview.MaterialTextView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:text="@string/app_name"
-				android:textSize="@dimen/textSize_header"
-				android:textStyle="bold" />
-		
-		
-		</com.google.android.material.bottomappbar.BottomAppBar>
-	
-	</androidx.coordinatorlayout.widget.CoordinatorLayout>
-	
-	<androidx.coordinatorlayout.widget.CoordinatorLayout
 		android:id="@+id/coordinator_fragment"
 		android:layout_width="match_parent"
 		android:layout_height="0dp"
-		app:layout_constraintBottom_toTopOf="@+id/coordinator_bottom"
+		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintTop_toTopOf="parent">
 		
 		<androidx.constraintlayout.widget.ConstraintLayout
@@ -75,7 +46,7 @@
 				style="@style/Widget.MaterialComponents.Chip.Choice"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:text="HD"
+				android:text="@string/hd"
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toBottomOf="@+id/layout_search_wiki" />
 			
@@ -94,14 +65,14 @@
 					style="@style/Widget.MaterialComponents.Chip.Choice"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:text="Before Yesturday" />
+					android:text="@string/before_yesturday" />
 				
 				<com.google.android.material.chip.Chip
 					android:id="@+id/chip_show_yesterday_apod"
 					style="@style/Widget.MaterialComponents.Chip.Choice"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:text="Yesterday" />
+					android:text="@string/yesterday" />
 				
 				<com.google.android.material.chip.Chip
 					android:id="@+id/chip_show_today_apod"
@@ -109,7 +80,7 @@
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:checked="true"
-					android:text="Today" />
+					android:text="@string/today" />
 			
 			</com.google.android.material.chip.ChipGroup>
 			
@@ -121,7 +92,17 @@
 				android:scaleType="centerCrop"
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintTop_toBottomOf="@+id/chipGroup"
-				app:srcCompat="@drawable/ic_apod_image_loading_error" />
+				app:srcCompat="@drawable/ic_broken_image" />
+			
+			<com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+				android:id="@+id/youtube_player_view"
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_margin="@dimen/margin_average"
+				app:showFullScreenButton="false"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/chipGroup" />
+		
 		
 		</androidx.constraintlayout.widget.ConstraintLayout>
 		

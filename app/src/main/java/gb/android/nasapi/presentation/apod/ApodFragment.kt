@@ -1,7 +1,6 @@
 package gb.android.nasapi.presentation.apod
 
 import android.content.Intent
-import android.content.res.Configuration
 import android.net.Uri
 import android.os.Bundle
 import android.view.*
@@ -11,10 +10,10 @@ import androidx.lifecycle.ViewModelProvider
 import coil.api.load
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import gb.android.nasapi.R
 import gb.android.nasapi.databinding.FragmentApodBinding
-import gb.android.nasapi.presentation.MainActivity
-import gb.android.nasapi.presentation.themes.ThemesFragment
 
 class ApodFragment : Fragment() {
 
@@ -55,8 +54,6 @@ class ApodFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupBottomAppBar(view)
-
         setBottomSheetBehavior(binding.bottomSheet.bottomSheetContainer)
 
         viewModel.requestApod()
@@ -75,9 +72,9 @@ class ApodFragment : Fragment() {
                 val apodState = viewModel.liveDataToObserve.value as ApodState.SuccessImage
 
                 if (isHdToggled)
-                    loadApod(apodState.apodDomainDataModel.hdurl)
+                    loadPicture(apodState.apodDomainDataModel.hdurl)
                 else
-                    loadApod(apodState.apodDomainDataModel.url)
+                    loadPicture(apodState.apodDomainDataModel.url)
             }
         }
 
@@ -102,42 +99,13 @@ class ApodFragment : Fragment() {
     }
 
     //===========================================================================================
-    // BOTTOM APP BAR
-
-    private fun setupBottomAppBar(view: View) {
-        (activity as MainActivity).setSupportActionBar(view.findViewById(R.id.bottom_app_bar))
-        setHasOptionsMenu(true)
-    }
-
-    //===========================================================================================
-    // BOTTOM APP BAR MENU
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.menu_bottom_bar, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_open_fragment_themes -> {
-                activity?.supportFragmentManager?.beginTransaction()
-                    ?.replace(R.id.fragment_container, ThemesFragment.newInstance())
-                    ?.addToBackStack("")
-                    ?.commit()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
-
-
-    //===========================================================================================
     // RENDER
 
     private fun render(apodState: ApodState) {
         when (apodState) {
             is ApodState.Error -> {
                 binding.bottomSheet.bottomSheetContainer.visibility = View.GONE
+                binding.youtubePlayerView.visibility = View.GONE
                 Snackbar
                     .make(
                         binding.main,
@@ -146,15 +114,27 @@ class ApodFragment : Fragment() {
                     ).show()
             }
             ApodState.Loading -> {
+                binding.imageView.visibility = View.VISIBLE
+                binding.youtubePlayerView.visibility = View.GONE
+
                 binding.bottomSheet.bottomSheetContainer.visibility = View.GONE
                 Snackbar
                     .make(
                         binding.main,
                         "LOADING....",
-                        Snackbar.LENGTH_LONG
+                        Snackbar.LENGTH_SHORT
                     ).show()
             }
             is ApodState.SuccessImage -> {
+                binding.imageView.visibility = View.VISIBLE
+                binding.youtubePlayerView.visibility = View.GONE
+
+
+                showBottomSheet(
+                    apodState.apodDomainDataModel.title,
+                    apodState.apodDomainDataModel.explanation
+                )
+
                 binding.bottomSheet.bottomSheetContainer.visibility = View.VISIBLE
                 binding.bottomSheet.bottomSheetDescriptionHeader.text =
                     apodState.apodDomainDataModel.title
@@ -163,24 +143,61 @@ class ApodFragment : Fragment() {
 
                 if (!apodState.apodDomainDataModel.url.isNullOrBlank()) {
                     if (binding.chipToggleHd.isChecked)
-                        loadApod(apodState.apodDomainDataModel.hdurl)
+                        loadPicture(apodState.apodDomainDataModel.hdurl)
                     else
-                        loadApod(apodState.apodDomainDataModel.url)
+                        loadPicture(apodState.apodDomainDataModel.url)
                 }
             }
             is ApodState.SuccessVideo -> {
-                // TODO: VideoPlayer
+                binding.imageView.visibility = View.GONE
+                binding.youtubePlayerView.visibility = View.VISIBLE
+                showNasaVideo(getVideoIDFromUrl(apodState.apodDomainDataModel.url ?: ""))
+                showBottomSheet(
+                    apodState.apodDomainDataModel.title,
+                    apodState.apodDomainDataModel.explanation
+                )
             }
         }
     }
 
-    private fun loadApod(url: String?) {
+    private fun loadPicture(url: String?) {
         binding.imageView.load(url) {
             lifecycle(this@ApodFragment)
             placeholder(R.drawable.ic_apod_image_loading)
-            error(R.drawable.ic_apod_image_loading_error)
+            error(R.drawable.ic_broken_image)
+        }
+    }
+
+    private fun showBottomSheet(title: String?, explanation: String?) {
+        if (title != null)
+            if (explanation != null) {
+                binding.bottomSheet.bottomSheetContainer.visibility = View.VISIBLE
+                binding.bottomSheet.bottomSheetDescriptionHeader.text = title
+                binding.bottomSheet.bottomSheetExplanation.text = explanation
+            }
+    }
+
+    private fun getVideoIDFromUrl(url: String): String {
+        var id = url
+        while (id.indexOf('/') > -1) {
+            id = id.subSequence(id.indexOf('/') + 1, id.length - 1) as String
         }
 
+        if (id.indexOf('?') > -1)
+            id = id.subSequence(0, id.indexOf('?')) as String
+
+        return id
+    }
+
+    private fun showNasaVideo(videoId: String) {
+        lifecycle.addObserver(binding.youtubePlayerView)
+        binding.youtubePlayerView.addYouTubePlayerListener(object :
+            AbstractYouTubePlayerListener() {
+            override fun onReady(youTubePlayer: YouTubePlayer) {
+
+                youTubePlayer.loadVideo(videoId, 0f)
+            }
+        })
     }
 
     //===========================================================================================
@@ -189,9 +206,11 @@ class ApodFragment : Fragment() {
     private lateinit var bottomSheetBehaviour: BottomSheetBehavior<LinearLayout>
 
     private fun setBottomSheetBehavior(bottomSheet: LinearLayout) {
+
+
         bottomSheetBehaviour = BottomSheetBehavior.from(bottomSheet)
         bottomSheetBehaviour.state = BottomSheetBehavior.STATE_COLLAPSED
 
-        bottomSheetBehaviour.setPeekHeight(binding.bottomAppBar.getHeight() + 140);
+        bottomSheetBehaviour.setPeekHeight(140);
     }
 }

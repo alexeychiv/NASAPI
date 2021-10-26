@@ -3,4 +3,17 @@
 	<string name="search_wiki">search wiki</string>
 	<string name="purple_theme">Purple Theme</string>
 	<string name="red_theme">Red Theme</string>
+	<string name="earth">Earth</string>
+	<string name="mars">Mars</string>
+	<string name="weather">Weather</string>
+	
+	<string name="test_weather_body">Solar activity was at minor to moderate levels during this reporting period.  There were 4 C-type CMEs (see details below).Solar activity was at minor to moderate levels during this reporting period.  There were 4 C-type CMEs (see details below).Solar activity was at minor to moderate levels during this reporting period.  There were 4 C-type CMEs (see details below).Solar activity was at minor to moderate levels during this reporting period.  There were 4 C-type CMEs (see details below).Solar activity was at minor to moderate levels during this reporting period.  There were 4 C-type CMEs (see details below).Solar activity was at minor to moderate levels during this reporting period.  There were 4 C-type CMEs (see details below).</string>
+	<string name="choose_rover">Choose Rover</string>
+	<string name="curiosity">Curiosity</string>
+	<string name="spirit">Spirit</string>
+	<string name="opportunity">Opportunity</string>
+	<string name="before_yesturday">Before Yesturday</string>
+	<string name="yesterday">Yesterday</string>
+	<string name="today">Today</string>
+	<string name="hd">HD</string>
 </resources>

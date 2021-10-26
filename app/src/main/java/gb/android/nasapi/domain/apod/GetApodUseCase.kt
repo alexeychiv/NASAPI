@@ -1,4 +1,4 @@
-package gb.android.nasapi.domain.ApodFragment
+package gb.android.nasapi.domain.apod
 
 import getDateDaysBefore
 

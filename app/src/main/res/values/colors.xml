@@ -18,6 +18,8 @@
 	<color name="gray">#FF777777</color>
 	<color name="gray_dark">#FF393939</color>
 	<color name="black">#FF000000</color>
+	
+	<color name="blue_700">#303F9F</color>
 
 
 </resources>

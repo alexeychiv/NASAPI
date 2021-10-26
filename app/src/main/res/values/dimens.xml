@@ -15,8 +15,10 @@
 	<dimen name="Apod_BottomSheet_Line_height">1dp</dimen>
 	
 	
+	<dimen name="textSize_small">15sp</dimen>
 	<dimen name="textSize_plain">20sp</dimen>
 	<dimen name="textSize_header">25sp</dimen>
+	<dimen name="mars_pic_height">350dp</dimen>
 
 
 </resources>

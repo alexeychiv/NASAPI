@@ -1,6 +1,6 @@
 package gb.android.nasapi.presentation.apod
 
-import gb.android.nasapi.domain.ApodFragment.ApodDomainDataModel
+import gb.android.nasapi.domain.apod.ApodDomainDataModel
 
 sealed class ApodState {
     object Loading : ApodState()
