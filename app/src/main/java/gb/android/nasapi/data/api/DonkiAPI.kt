@@ -1,5 +1,6 @@
-package gb.android.nasapi.data.repository
+package gb.android.nasapi.data.api
 
+import gb.android.nasapi.data.models.DonkiData
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

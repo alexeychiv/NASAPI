@@ -1,8 +1,8 @@
 package gb.android.nasapi.data
 
 import gb.android.nasapi.BuildConfig
-import gb.android.nasapi.data.repository.ApodAPI
-import gb.android.nasapi.data.repository.ApodData
+import gb.android.nasapi.data.api.ApodAPI
+import gb.android.nasapi.data.models.ApodData
 import gb.android.nasapi.domain.apod.ApodDomainDataModel
 import gb.android.nasapi.domain.apod.ApodRepository
 

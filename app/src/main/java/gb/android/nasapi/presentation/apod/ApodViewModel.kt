@@ -46,7 +46,7 @@ class ApodViewModel(
         if (BuildConfig.NASA_API_KEY.isNullOrBlank()) {
             liveDataToObserveMutable.value = ApodState.Error(Throwable("ERROR: API KEY REQUIRED!"))
         } else launch {
-            val apodDomainDataModel: ApodDomainDataModel = getApodUseCase.execute(daysBefore)
+            val apodDomainDataModel: ApodDomainDataModel = getApodUseCase.invoke(daysBefore)
 
             if (apodDomainDataModel.mediaType == "image")
                 liveDataToObserveMutable.value =

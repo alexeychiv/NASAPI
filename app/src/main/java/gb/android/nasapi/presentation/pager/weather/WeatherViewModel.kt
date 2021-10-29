@@ -45,7 +45,7 @@ class WeatherViewModel(
             liveDataToObserveMutable.value =
                 WeatherState.Error(Throwable("ERROR: API KEY REQUIRED!"))
         } else launch {
-            val weatherDomainDataModelList = getDonkiUseCase.execute()
+            val weatherDomainDataModelList = getDonkiUseCase.invoke()
 
             liveDataToObserveMutable.value = WeatherState.Success(weatherDomainDataModelList)
         }

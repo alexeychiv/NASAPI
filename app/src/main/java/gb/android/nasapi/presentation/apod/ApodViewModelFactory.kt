@@ -3,7 +3,7 @@ package gb.android.nasapi.presentation.apod
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import gb.android.nasapi.data.ApodRepositoryImpl
-import gb.android.nasapi.data.repository.RetrofitBuilder
+import gb.android.nasapi.data.retrofit.RetrofitBuilder
 import gb.android.nasapi.domain.apod.GetApodUseCase
 
 class ApodViewModelFactory : ViewModelProvider.Factory {

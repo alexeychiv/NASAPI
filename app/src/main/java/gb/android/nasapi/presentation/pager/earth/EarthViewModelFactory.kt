@@ -3,7 +3,7 @@ package gb.android.nasapi.presentation.pager.earth
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import gb.android.nasapi.data.EarthRepositoryImpl
-import gb.android.nasapi.data.repository.RetrofitBuilder
+import gb.android.nasapi.data.retrofit.RetrofitBuilder
 import gb.android.nasapi.domain.Earth.GetEarthUseCase
 
 class EarthViewModelFactory : ViewModelProvider.Factory {

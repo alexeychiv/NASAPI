@@ -47,7 +47,7 @@ class EarthViewModel(
                 EarthState.Error(Throwable("ERROR: API KEY REQUIRED!"))
         } else launch {
             val earthDomainDataModel =
-                getEarthUseCase.execute(lon = lon, lat = lat, daysBefore = daysBefore)
+                getEarthUseCase.invoke(lon = lon, lat = lat, daysBefore = daysBefore)
 
             liveDataToObserveMutable.value = EarthState.Success(earthDomainDataModel)
         }

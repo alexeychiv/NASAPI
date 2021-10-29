@@ -1,8 +1,8 @@
 package gb.android.nasapi.data
 
 import gb.android.nasapi.BuildConfig
-import gb.android.nasapi.data.repository.EarthAPI
-import gb.android.nasapi.data.repository.EarthData
+import gb.android.nasapi.data.api.EarthAPI
+import gb.android.nasapi.data.models.EarthData
 import gb.android.nasapi.domain.Earth.EarthDomainDataModel
 import gb.android.nasapi.domain.Earth.EarthRepository
 

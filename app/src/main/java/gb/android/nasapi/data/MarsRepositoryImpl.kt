@@ -1,9 +1,9 @@
 package gb.android.nasapi.data
 
 import gb.android.nasapi.BuildConfig
-import gb.android.nasapi.data.repository.MarsAPI
-import gb.android.nasapi.data.repository.MarsData
-import gb.android.nasapi.data.repository.PicData
+import gb.android.nasapi.data.api.MarsAPI
+import gb.android.nasapi.data.models.MarsData
+import gb.android.nasapi.data.models.MarsPicData
 import gb.android.nasapi.domain.mars.MarsDomainDataModel
 import gb.android.nasapi.domain.mars.MarsRepository
 import retrofit2.Response
@@ -55,7 +55,7 @@ class MarsRepositoryImpl(
     }
 
 
-    private fun mapPicDataToMarsDomainDataModel(picData: PicData): MarsDomainDataModel {
+    private fun mapPicDataToMarsDomainDataModel(picData: MarsPicData): MarsDomainDataModel {
         return MarsDomainDataModel(
             img_src = picData.img_src,
             earth_date = picData.earth_date

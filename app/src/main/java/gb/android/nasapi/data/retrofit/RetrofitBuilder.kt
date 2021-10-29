@@ -1,6 +1,10 @@
-package gb.android.nasapi.data.repository
+package gb.android.nasapi.data.retrofit
 
 import com.google.gson.GsonBuilder
+import gb.android.nasapi.data.api.ApodAPI
+import gb.android.nasapi.data.api.DonkiAPI
+import gb.android.nasapi.data.api.EarthAPI
+import gb.android.nasapi.data.api.MarsAPI
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

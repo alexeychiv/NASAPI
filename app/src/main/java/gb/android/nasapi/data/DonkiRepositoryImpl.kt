@@ -1,8 +1,8 @@
 package gb.android.nasapi.data
 
 import gb.android.nasapi.BuildConfig
-import gb.android.nasapi.data.repository.DonkiAPI
-import gb.android.nasapi.data.repository.DonkiData
+import gb.android.nasapi.data.api.DonkiAPI
+import gb.android.nasapi.data.models.DonkiData
 import gb.android.nasapi.domain.weather.DonkiDomainDataModel
 import gb.android.nasapi.domain.weather.DonkiRepository
 

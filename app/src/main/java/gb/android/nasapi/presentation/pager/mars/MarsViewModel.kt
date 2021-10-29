@@ -51,7 +51,7 @@ class MarsViewModel(
             liveDataToObserveMutable.value =
                 MarsState.Error(Throwable("ERROR: API KEY REQUIRED!"))
         } else launch {
-            val apodDomainDataModelList = marsUseCase.execute()
+            val apodDomainDataModelList = marsUseCase.invoke()
 
             liveDataToObserveMutable.value = MarsState.Success(apodDomainDataModelList)
         }

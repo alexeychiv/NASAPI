@@ -3,7 +3,7 @@ package gb.android.nasapi.presentation.pager.mars
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import gb.android.nasapi.data.MarsRepositoryImpl
-import gb.android.nasapi.data.repository.RetrofitBuilder
+import gb.android.nasapi.data.retrofit.RetrofitBuilder
 import gb.android.nasapi.domain.mars.GetCuriosityPicsUseCase
 import gb.android.nasapi.domain.mars.GetOpportunityPicsUseCase
 import gb.android.nasapi.domain.mars.GetSpiritPicsUseCase

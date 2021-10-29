@@ -1,4 +1,4 @@
-package gb.android.nasapi.data.repository
+package gb.android.nasapi.data.models
 
 import com.google.gson.annotations.SerializedName
 
