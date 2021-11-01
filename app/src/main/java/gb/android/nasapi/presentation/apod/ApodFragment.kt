@@ -61,9 +61,9 @@ class ApodFragment : Fragment() {
             render(it)
         }
 
-        binding.layoutSearchWiki.setEndIconOnClickListener {
+        binding.layoutSearchWiki.layoutSearchWiki.setEndIconOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW).apply {
-                data = Uri.parse("https://en.wikipedia.org/wiki/${binding.etSearchWiki.text}")
+                data = Uri.parse("https://en.wikipedia.org/wiki/${binding.layoutSearchWiki.etSearchWiki.text}")
             })
         }
 

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/search_wiki_motion_layout"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	app:layoutDescription="@xml/motion_scene">
+	
+	<androidx.appcompat.widget.AppCompatImageView
+		android:id="@+id/wiki_button"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:visibility="visible"
+		android:tint="@color/black"
+		android:layout_marginEnd="@dimen/margin_huge"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:srcCompat="@drawable/ic_search" />
+	
+	<com.google.android.material.textfield.TextInputLayout
+		android:id="@+id/layout_search_wiki"
+		style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:hint="@string/search_wiki"
+		app:counterEnabled="true"
+		app:counterMaxLength="20"
+		app:endIconCheckable="true"
+		app:endIconDrawable="@drawable/ic_search"
+		app:endIconMode="custom"
+		app:helperText="@string/search_wiki"
+		app:layout_constraintStart_toEndOf="parent"
+		app:layout_constraintTop_toTopOf="parent">
+		
+		<com.google.android.material.textfield.TextInputEditText
+			android:id="@+id/et_search_wiki"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:inputType="text" />
+	
+	</com.google.android.material.textfield.TextInputLayout>
+	
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

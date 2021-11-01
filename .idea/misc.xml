@@ -13,6 +13,7 @@
         <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/drawable/ic_earth.xml" value="0.24537037037037038" />
         <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/drawable/ic_home.xml" value="0.33958333333333335" />
         <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/drawable/ic_mars.xml" value="0.2490740740740741" />
+        <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/drawable/ic_search.xml" value="0.3338541666666667" />
         <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/drawable/ic_system.xml" value="0.2490740740740741" />
         <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/drawable/ic_telescope.xml" value="0.24537037037037038" />
         <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/drawable/rounded_top_corners_bg.xml" value="0.33958333333333335" />
@@ -23,7 +24,10 @@
         <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/layout/activity_api_custom_tab_mars.xml" value="0.15729483282674772" />
         <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/layout/activity_api_custom_tab_weather.xml" value="0.15729483282674772" />
         <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/layout/activity_apod.xml" value="0.20516304347826086" />
+        <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/layout/activity_collapsing_tool_bar.xml" value="0.3177083333333333" />
+        <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/layout/activity_constraint.xml" value="0.4466666666666667" />
         <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/layout/activity_main.xml" value="0.24166666666666667" />
+        <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/layout/activity_motion_layout.xml" value="0.22" />
         <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/layout/activity_pager.xml" value="0.22" />
         <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/layout/bottom_app_bar.xml" value="0.20878623188405798" />
         <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/layout/bottom_sheet_apod.xml" value="0.15704154002026344" />
@@ -38,12 +42,18 @@
         <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/layout/fragment_themes.xml" value="0.3333333333333333" />
         <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/layout/fragment_weather.xml" value="0.4466666666666667" />
         <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/layout/l.xml" value="0.3203125" />
+        <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/layout/motion_end.xml" value="0.32395833333333335" />
+        <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/layout/motion_scene.xml" value="0.32395833333333335" />
+        <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/layout/motion_start.xml" value="0.32395833333333335" />
         <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/layout/r.xml" value="0.15526849037487336" />
+        <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/layout/search_wiki_motion_layout.xml" value="0.22" />
+        <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/layout/search_wiki_motion_layout_start.xml" value="0.32395833333333335" />
         <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/menu/menu_apod_bottom_bar.xml" value="0.32083333333333336" />
         <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/menu/menu_bottom_bar.xml" value="0.5343589743589744" />
         <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/menu/menu_pager_bottom_bar.xml" value="0.3328125" />
         <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3380208333333333" />
         <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3380208333333333" />
+        <entry key="..\:/_ANDROID/NASAPI/app/src/main/res/xml/search_wiki_motion_scene.xml" value="0.32395833333333335" />
       </map>
     </option>
   </component>

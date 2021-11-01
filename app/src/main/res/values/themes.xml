@@ -4,6 +4,10 @@
 		<item name="android:forceDarkAllowed">true</item>
 	</style>
 	
+	<!--<style name="Theme.NASAPI" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+		<item name="android:forceDarkAllowed">true</item>
+	</style>-->
+	
 	<style name="Theme.NASAPI.Font" parent="Theme.NASAPI">
 		<item name="fontFamily">@font/courier</item>
 	</style>
@@ -48,6 +52,9 @@
 		<item name="colorAccent">@color/green_200</item>
 	
 	</style>
-
+	
+	
+	
+	
 
 </resources>

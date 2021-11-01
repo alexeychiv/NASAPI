@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+	
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+		
+		<!--PERCENTS=========================================================================-->
+		
+		<androidx.constraintlayout.widget.Guideline
+			android:id="@+id/guideline_percents"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			app:layout_constraintGuide_begin="15dp" />
+		
+		<TextView
+			android:id="@+id/tv_percents"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="CONSTRAINT PERCENTS"
+			android:textSize="20sp"
+			android:textStyle="bold"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="@+id/guideline_percents" />
+		
+		<TextView
+			android:id="@+id/tv_70percent"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:background="@color/red_700"
+			android:text="70%"
+			android:textAlignment="center"
+			android:textColor="@color/white"
+			android:textSize="25sp"
+			android:textStyle="bold"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/tv_percents"
+			app:layout_constraintWidth_percent="0.7" />
+		
+		<TextView
+			android:id="@+id/tv_30percent"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:background="@color/blue_700"
+			android:text="30%"
+			android:textAlignment="center"
+			android:textColor="@color/white"
+			android:textSize="25sp"
+			android:textStyle="bold"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toEndOf="@+id/tv_70percent"
+			app:layout_constraintTop_toTopOf="@+id/tv_70percent"
+			app:layout_constraintWidth_percent="0.3" />
+		
+		<!--===============================================================================-->
+		
+		<!--CHAINS=========================================================================-->
+		
+		<androidx.constraintlayout.widget.Guideline
+			android:id="@+id/guideline_chains"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			app:layout_constraintGuide_begin="110dp" />
+		
+		<TextView
+			android:id="@+id/tv_chains"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="CONSTRAINT CHAINS"
+			android:textSize="20sp"
+			android:textStyle="bold"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="@+id/guideline_chains" />
+		
+		<!--SPREAD CHAIN-->
+		
+		<TextView
+			android:id="@+id/tv_chain_spread1"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="10dp"
+			android:background="@color/gray"
+			android:text="SPREAD"
+			android:textColor="@color/white"
+			app:layout_constraintEnd_toStartOf="@+id/tv_chain_spread2"
+			app:layout_constraintHorizontal_chainStyle="spread"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/tv_chains" />
+		
+		<TextView
+			android:id="@+id/tv_chain_spread2"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:background="@color/gray_dark"
+			android:text="SPREAD"
+			android:textColor="@color/white"
+			app:layout_constraintEnd_toStartOf="@+id/tv_chain_spread3"
+			app:layout_constraintStart_toEndOf="@+id/tv_chain_spread1"
+			app:layout_constraintTop_toTopOf="@+id/tv_chain_spread1" />
+		
+		<TextView
+			android:id="@+id/tv_chain_spread3"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:background="@color/gray"
+			android:text="SPREAD"
+			android:textColor="@color/white"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toEndOf="@+id/tv_chain_spread2"
+			app:layout_constraintTop_toTopOf="@+id/tv_chain_spread1" />
+		
+		<!--SPREAD INSIDE CHAIN-->
+		
+		<TextView
+			android:id="@+id/tv_chain_spread_inside1"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="10dp"
+			android:background="@color/gray"
+			android:text="SPREAD INSIDE"
+			android:textColor="@color/white"
+			app:layout_constraintEnd_toStartOf="@+id/tv_chain_spread_inside2"
+			app:layout_constraintHorizontal_chainStyle="spread_inside"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/tv_chain_spread1" />
+		
+		<TextView
+			android:id="@+id/tv_chain_spread_inside2"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:background="@color/gray_dark"
+			android:text="SPREAD INSIDE"
+			android:textColor="@color/white"
+			app:layout_constraintEnd_toStartOf="@+id/tv_chain_spread_inside3"
+			app:layout_constraintStart_toEndOf="@+id/tv_chain_spread_inside1"
+			app:layout_constraintTop_toTopOf="@+id/tv_chain_spread_inside1" />
+		
+		<TextView
+			android:id="@+id/tv_chain_spread_inside3"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:background="@color/gray"
+			android:text="SPREAD INSIDE"
+			android:textColor="@color/white"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toEndOf="@+id/tv_chain_spread_inside2"
+			app:layout_constraintTop_toTopOf="@+id/tv_chain_spread_inside1" />
+		
+		<!--PACKED CHAIN-->
+		
+		<TextView
+			android:id="@+id/tv_chain_packed1"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="10dp"
+			android:background="@color/gray"
+			android:text="PACKED"
+			android:textColor="@color/white"
+			app:layout_constraintEnd_toStartOf="@+id/tv_chain_packed2"
+			app:layout_constraintHorizontal_chainStyle="packed"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/tv_chain_spread_inside1" />
+		
+		<TextView
+			android:id="@+id/tv_chain_packed2"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:background="@color/gray_dark"
+			android:text="PACKED"
+			android:textColor="@color/white"
+			app:layout_constraintEnd_toStartOf="@+id/tv_chain_packed3"
+			app:layout_constraintStart_toEndOf="@+id/tv_chain_packed1"
+			app:layout_constraintTop_toTopOf="@+id/tv_chain_packed1" />
+		
+		<TextView
+			android:id="@+id/tv_chain_packed3"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:background="@color/gray"
+			android:text="PACKED"
+			android:textColor="@color/white"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toEndOf="@+id/tv_chain_packed2"
+			app:layout_constraintTop_toTopOf="@+id/tv_chain_packed1" />
+		
+		<!--WEIGHTED CHAIN-->
+		
+		<TextView
+			android:id="@+id/tv_chain_weighted1"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="10dp"
+			android:background="@color/gray"
+			android:text="WEIGHTED"
+			android:textColor="@color/white"
+			app:layout_constraintEnd_toStartOf="@+id/tv_chain_weighted2"
+			app:layout_constraintHorizontal_chainStyle="spread"
+			app:layout_constraintHorizontal_weight="1"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/tv_chain_packed1" />
+		
+		<TextView
+			android:id="@+id/tv_chain_weighted2"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:background="@color/gray_dark"
+			android:text="WEIGHTED"
+			android:textAlignment="center"
+			android:textColor="@color/white"
+			app:layout_constraintEnd_toStartOf="@+id/tv_chain_weighted3"
+			app:layout_constraintHorizontal_weight="2"
+			app:layout_constraintStart_toEndOf="@+id/tv_chain_weighted1"
+			app:layout_constraintTop_toTopOf="@+id/tv_chain_weighted1" />
+		
+		<TextView
+			android:id="@+id/tv_chain_weighted3"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:background="@color/gray"
+			android:text="WEIGHTED"
+			android:textAlignment="center"
+			android:textColor="@color/white"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintHorizontal_weight="3"
+			app:layout_constraintStart_toEndOf="@+id/tv_chain_weighted2"
+			app:layout_constraintTop_toTopOf="@+id/tv_chain_weighted1" />
+		
+		<!--===============================================================================-->
+		
+		<!--BARRIERS=========================================================================-->
+		
+		<androidx.constraintlayout.widget.Guideline
+			android:id="@+id/guideline_barriers"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			app:layout_constraintGuide_begin="300dp" />
+		
+		<TextView
+			android:id="@+id/tv_barriers"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="BARRIERS"
+			android:textSize="20sp"
+			android:textStyle="bold"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="@+id/guideline_barriers" />
+		
+		<TextView
+			android:id="@+id/tv_barrier_label1"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="10dp"
+			android:layout_marginTop="10dp"
+			android:background="@color/gray"
+			android:text="Label"
+			android:textColor="@color/white"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/tv_barriers" />
+		
+		<TextView
+			android:id="@+id/tv_barrier_label2"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:background="@color/gray_dark"
+			android:text="Label Very Long"
+			android:textColor="@color/white"
+			app:layout_constraintStart_toStartOf="@+id/tv_barrier_label1"
+			app:layout_constraintTop_toBottomOf="@+id/tv_barrier_label1" />
+		
+		<TextView
+			android:id="@+id/tv_barrier_label3"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:background="@color/gray"
+			android:text="Label Long"
+			android:textColor="@color/white"
+			app:layout_constraintStart_toStartOf="@+id/tv_barrier_label1"
+			app:layout_constraintTop_toBottomOf="@+id/tv_barrier_label2" />
+		
+		<androidx.constraintlayout.widget.Barrier
+			android:id="@+id/barrier"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:barrierDirection="end"
+			app:constraint_referenced_ids="tv_barrier_label1,tv_barrier_label2, tv_barrier_label3" />
+		
+		<TextView
+			android:id="@+id/tv_barrier_aligned"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:background="@color/gray"
+			android:text="Aligned with labels"
+			android:textColor="@color/white"
+			app:layout_constraintStart_toEndOf="@id/barrier"
+			app:layout_constraintTop_toTopOf="@+id/tv_barrier_label1" />
+		
+		<!--===============================================================================-->
+		
+		<!--GROUPS=========================================================================-->
+		
+		<androidx.constraintlayout.widget.Guideline
+			android:id="@+id/guideline_groups"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			app:layout_constraintGuide_begin="440dp" />
+		
+		<TextView
+			android:id="@+id/tv_groups"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="GROUPS"
+			android:textSize="20sp"
+			android:textStyle="bold"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="@+id/guideline_groups" />
+		
+		<com.google.android.material.chip.Chip
+			android:id="@+id/chip_toggle_group_visibility"
+			style="@style/Widget.MaterialComponents.Chip.Choice"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:checked="true"
+			android:text="Group Visibility"
+			app:layout_constraintBottom_toBottomOf="@+id/tv_groups"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toEndOf="@+id/tv_groups"
+			app:layout_constraintTop_toTopOf="@+id/guideline_groups" />
+		
+		<androidx.constraintlayout.widget.Group
+			android:id="@+id/group"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:constraint_referenced_ids="tv_groups1,tv_groups2,tv_groups3"
+			
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/tv_groups" />
+		
+		<TextView
+			android:id="@+id/tv_groups1"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="10dp"
+			android:text="GROUPED VIEW"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/tv_groups" />
+		
+		<TextView
+			android:id="@+id/tv_groups2"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="GROUPED VIEW"
+			app:layout_constraintStart_toStartOf="@+id/tv_groups1"
+			app:layout_constraintTop_toBottomOf="@+id/tv_groups1" />
+		
+		<TextView
+			android:id="@+id/tv_groups3"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="GROUPED VIEW"
+			app:layout_constraintStart_toStartOf="@+id/tv_groups2"
+			app:layout_constraintTop_toBottomOf="@+id/tv_groups2" />
+		
+		<!--===============================================================================-->
+		
+		<!--CIRCULAR CONSTRAINTS=========================================================================-->
+		
+		<androidx.constraintlayout.widget.Guideline
+			android:id="@+id/guideline_circle_constraints"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			app:layout_constraintGuide_begin="560dp" />
+		
+		<TextView
+			android:id="@+id/tv_circular_constraints"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="CIRCULAR CONSTRAINTS"
+			android:textSize="20sp"
+			android:textStyle="bold"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="@+id/guideline_circle_constraints" />
+		
+		<TextView
+			android:id="@+id/tv_anchor"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="10dp"
+			android:layout_marginBottom="100dp"
+			android:background="@color/red_200"
+			android:text="ANCHOR VIEW"
+			android:textColor="@color/white"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/tv_circular_constraints" />
+		
+		<TextView
+			android:id="@+id/tv_circular1"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:background="@color/green_200"
+			android:text="VIEW"
+			android:textColor="@color/white"
+			app:layout_constraintCircle="@id/tv_anchor"
+			app:layout_constraintCircleAngle="240"
+			app:layout_constraintCircleRadius="70dp" />
+		
+		<TextView
+			android:id="@+id/tv_circular2"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:background="@color/green_200"
+			android:text="VIEW"
+			android:textColor="@color/white"
+			app:layout_constraintCircle="@id/tv_anchor"
+			app:layout_constraintCircleAngle="120"
+			app:layout_constraintCircleRadius="70dp" />
+		
+		<!--===============================================================================-->
+		
+		<androidx.constraintlayout.widget.Guideline
+			android:id="@+id/guideline_end"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			app:layout_constraintGuide_begin="691dp" />
+	
+	</androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

@@ -25,7 +25,37 @@
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
-	
+		
+		<!--<activity
+			android:name="gb.android.hw4.ConstraintActivity"
+			android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>-->
+		
+		<!--<activity
+			android:name="gb.android.hw4.CollapsingToolBarActivity"
+			android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>-->
+		
+		<!--<activity
+			android:name="gb.android.hw4.MotionLayoutActivity"
+			android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>-->
+		
 	</application>
 
 </manifest>
