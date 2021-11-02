@@ -1,9 +1,11 @@
 package gb.android.nasapi.presentation.apod
 
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.*
+import android.view.animation.DecelerateInterpolator
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -63,7 +65,8 @@ class ApodFragment : Fragment() {
 
         binding.layoutSearchWiki.layoutSearchWiki.setEndIconOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW).apply {
-                data = Uri.parse("https://en.wikipedia.org/wiki/${binding.layoutSearchWiki.etSearchWiki.text}")
+                data =
+                    Uri.parse("https://en.wikipedia.org/wiki/${binding.layoutSearchWiki.etSearchWiki.text}")
             })
         }
 
@@ -104,8 +107,10 @@ class ApodFragment : Fragment() {
     private fun render(apodState: ApodState) {
         when (apodState) {
             is ApodState.Error -> {
-                binding.bottomSheet.bottomSheetContainer.visibility = View.GONE
-                binding.youtubePlayerView.visibility = View.GONE
+                animationFadeIn(binding.imageView)
+                animationFadeOut(binding.youtubePlayerView)
+                animationFadeOut(binding.bottomSheet.bottomSheetContainer)
+
                 Snackbar
                     .make(
                         binding.main,
@@ -114,32 +119,22 @@ class ApodFragment : Fragment() {
                     ).show()
             }
             ApodState.Loading -> {
-                binding.imageView.visibility = View.VISIBLE
-                binding.youtubePlayerView.visibility = View.GONE
+                animationFadeOut(binding.imageView)
+                animationFadeOut(binding.youtubePlayerView)
+                animationFadeOut(binding.bottomSheet.bottomSheetContainer)
 
                 binding.bottomSheet.bottomSheetContainer.visibility = View.GONE
-                Snackbar
-                    .make(
-                        binding.main,
-                        "LOADING....",
-                        Snackbar.LENGTH_SHORT
-                    ).show()
+                /*Snackbar.make(binding.main,"LOADING....",Snackbar.LENGTH_SHORT).show()*/
             }
             is ApodState.SuccessImage -> {
-                binding.imageView.visibility = View.VISIBLE
-                binding.youtubePlayerView.visibility = View.GONE
+                animationFadeIn(binding.imageView)
+                animationFadeOut(binding.youtubePlayerView)
 
-
+                animationFadeIn(binding.bottomSheet.bottomSheetContainer)
                 showBottomSheet(
                     apodState.apodDomainDataModel.title,
                     apodState.apodDomainDataModel.explanation
                 )
-
-                binding.bottomSheet.bottomSheetContainer.visibility = View.VISIBLE
-                binding.bottomSheet.bottomSheetDescriptionHeader.text =
-                    apodState.apodDomainDataModel.title
-                binding.bottomSheet.bottomSheetExplanation.text =
-                    apodState.apodDomainDataModel.explanation
 
                 if (!apodState.apodDomainDataModel.url.isNullOrBlank()) {
                     if (binding.chipToggleHd.isChecked)
@@ -149,9 +144,12 @@ class ApodFragment : Fragment() {
                 }
             }
             is ApodState.SuccessVideo -> {
-                binding.imageView.visibility = View.GONE
-                binding.youtubePlayerView.visibility = View.VISIBLE
+                animationFadeOut(binding.imageView)
+                animationFadeIn(binding.youtubePlayerView)
+
                 showNasaVideo(getVideoIDFromUrl(apodState.apodDomainDataModel.url ?: ""))
+
+                animationFadeIn(binding.bottomSheet.bottomSheetContainer)
                 showBottomSheet(
                     apodState.apodDomainDataModel.title,
                     apodState.apodDomainDataModel.explanation
@@ -201,16 +199,38 @@ class ApodFragment : Fragment() {
     }
 
     //===========================================================================================
+    // ANIMATIONS
+
+    private fun animationFadeIn(view: View) {
+        val animator = ObjectAnimator.ofFloat(view, View.ALPHA, view.alpha, 1f)
+        animator.apply {
+            duration = 800
+            interpolator = DecelerateInterpolator()
+            start()
+        }
+    }
+
+    private fun animationFadeOut(view: View) {
+        val animator = ObjectAnimator.ofFloat(view, View.ALPHA, view.alpha, 0f)
+        animator.apply {
+            duration = 800
+            interpolator = DecelerateInterpolator()
+            start()
+        }
+    }
+
+
+    //===========================================================================================
     // BOTTOM SHEET
+
 
     private lateinit var bottomSheetBehaviour: BottomSheetBehavior<LinearLayout>
 
     private fun setBottomSheetBehavior(bottomSheet: LinearLayout) {
 
-
         bottomSheetBehaviour = BottomSheetBehavior.from(bottomSheet)
         bottomSheetBehaviour.state = BottomSheetBehavior.STATE_COLLAPSED
 
-        bottomSheetBehaviour.setPeekHeight(140);
+        bottomSheetBehaviour.peekHeight = 140
     }
 }

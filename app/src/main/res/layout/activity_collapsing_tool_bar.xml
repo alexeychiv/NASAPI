@@ -42,7 +42,7 @@
 				app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 		
 		</com.google.android.material.appbar.CollapsingToolbarLayout>
-		
+	
 	</com.google.android.material.appbar.AppBarLayout>
 	
 	<TextView
@@ -51,7 +51,7 @@
 		android:textAlignment="center"
 		android:text="BLAH"
 		android:background="@color/white"
-		app:layout_scrollFlags="scroll|snap"/>
+		app:layout_scrollFlags="scroll|snap" />
 	
 	<androidx.core.widget.NestedScrollView
 		android:layout_width="match_parent"

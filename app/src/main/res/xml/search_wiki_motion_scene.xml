@@ -10,7 +10,7 @@
 			motion:dragDirection="dragRight"
 			motion:touchAnchorId="@+id/wiki_button"
 			motion:touchAnchorSide="right" />
-		
-	</Transition>
 	
+	</Transition>
+
 </MotionScene>

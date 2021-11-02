@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content">
+	
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
+		
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+			
+			<com.google.android.material.chip.Chip
+				android:id="@+id/chip_object_animator_fade"
+				style="@style/Widget.MaterialComponents.Chip.Choice"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:checked="true"
+				android:text="fade"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent" />
+			
+			<View
+				android:id="@+id/view_transition_fade"
+				android:layout_width="0dp"
+				android:layout_height="0dp"
+				android:background="@color/red_200"
+				app:layout_constraintBottom_toBottomOf="@id/chip_object_animator_fade"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toEndOf="@id/chip_object_animator_fade"
+				app:layout_constraintTop_toTopOf="@id/chip_object_animator_fade" />
+		
+		</androidx.constraintlayout.widget.ConstraintLayout>
+		
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/margin_small">
+			
+			<Button
+				android:id="@+id/btn_object_animator_move"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="push"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent" />
+			
+			<View
+				android:id="@+id/view_transition_move"
+				android:layout_width="40dp"
+				android:layout_height="0dp"
+				android:background="@color/red_200"
+				app:layout_constraintBottom_toBottomOf="@id/btn_object_animator_move"
+				app:layout_constraintStart_toEndOf="@id/btn_object_animator_move"
+				app:layout_constraintTop_toTopOf="@id/btn_object_animator_move" />
+		
+		</androidx.constraintlayout.widget.ConstraintLayout>
+		
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/margin_small">
+			
+			<Button
+				android:id="@+id/btn_object_animator_rotate"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="push"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent" />
+			
+			<View
+				android:id="@+id/view_transition_rotate"
+				android:layout_width="50dp"
+				android:layout_height="20dp"
+				android:background="@color/red_200"
+				app:layout_constraintBottom_toBottomOf="@id/btn_object_animator_rotate"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toEndOf="@id/btn_object_animator_rotate"
+				app:layout_constraintTop_toTopOf="@id/btn_object_animator_rotate" />
+		
+		</androidx.constraintlayout.widget.ConstraintLayout>
+	
+	
+	</LinearLayout>
+
+</ScrollView>
