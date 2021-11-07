@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/todo_item_container"
+	android:layout_width="match_parent"
+	android:backgroundTint="?colorSurface"
+	android:elevation="1dp"
+	android:layout_height="wrap_content">
+	
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:layout_margin="@dimen/margin_small"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+		
+		
+		<EditText
+			android:id="@+id/et_to_do_text"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_margin="@dimen/margin_average"
+			android:text="To Do"
+			android:textColor="?colorOnSurface"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toStartOf="@+id/low_priority"
+			app:layout_constraintHorizontal_bias="0.0"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+		
+		<androidx.appcompat.widget.AppCompatImageView
+			android:id="@+id/addItemImageView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="10dp"
+			android:background="?colorAccent"
+			app:layout_constraintEnd_toStartOf="@+id/dragHandleImageView"
+			app:layout_constraintTop_toTopOf="parent"
+			app:srcCompat="@drawable/ic_plus" />
+		
+		<androidx.appcompat.widget.AppCompatImageView
+			android:id="@+id/removeItemImageView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="10dp"
+			android:background="?colorAccent"
+			app:layout_constraintEnd_toEndOf="@+id/addItemImageView"
+			app:layout_constraintTop_toBottomOf="@+id/addItemImageView"
+			app:srcCompat="@drawable/ic_trash" />
+		
+		<androidx.appcompat.widget.AppCompatImageView
+			android:id="@+id/moveItemUp"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="10dp"
+			android:layout_marginEnd="20dp"
+			android:tint="@color/design_default_color_error"
+			app:layout_constraintBottom_toBottomOf="@+id/addItemImageView"
+			app:layout_constraintEnd_toStartOf="@+id/moveItemDown"
+			app:layout_constraintTop_toTopOf="@+id/addItemImageView"
+			app:srcCompat="@android:drawable/arrow_up_float" />
+		
+		<androidx.appcompat.widget.AppCompatImageView
+			android:id="@+id/moveItemDown"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="@dimen/margin_average"
+			android:tint="@color/design_default_color_error"
+			app:layout_constraintBottom_toBottomOf="@+id/addItemImageView"
+			app:layout_constraintEnd_toStartOf="@+id/addItemImageView"
+			app:layout_constraintTop_toTopOf="@+id/addItemImageView"
+			app:srcCompat="@android:drawable/arrow_down_float" />
+		
+		<androidx.appcompat.widget.AppCompatImageView
+			android:id="@+id/dragHandleImageView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="15dp"
+			android:layout_marginEnd="@dimen/margin_average"
+			android:tint="?colorOnSurface"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			app:srcCompat="@drawable/ic_hamburger_menu_bottom_bar" />
+		
+		<androidx.appcompat.widget.AppCompatImageView
+			android:id="@+id/low_priority"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:tint="?colorOnSurface"
+			app:layout_constraintEnd_toStartOf="@+id/medium_priority"
+			app:layout_constraintTop_toTopOf="@+id/high_priority"
+			app:srcCompat="@drawable/ic_circle" />
+		
+		<androidx.appcompat.widget.AppCompatImageView
+			android:id="@+id/medium_priority"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:tint="?colorOnSurface"
+			app:layout_constraintEnd_toStartOf="@+id/high_priority"
+			app:layout_constraintTop_toTopOf="@+id/high_priority"
+			app:srcCompat="@drawable/ic_circle" />
+		
+		<androidx.appcompat.widget.AppCompatImageView
+			android:id="@+id/high_priority"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginEnd="@dimen/margin_average"
+			android:tint="?colorOnSurface"
+			app:layout_constraintBottom_toBottomOf="@+id/removeItemImageView"
+			app:layout_constraintEnd_toStartOf="@+id/removeItemImageView"
+			app:layout_constraintTop_toTopOf="@+id/removeItemImageView"
+			app:srcCompat="@drawable/ic_circle" />
+	
+	</androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

@@ -6,18 +6,47 @@
 	<item
 		android:id="@+id/menu_item_back_to_apod_fragment"
 		android:icon="@drawable/ic_home"
-		app:showAsAction="always"
-		android:title="" />
+		android:title=""
+		app:showAsAction="always" />
 	
 	
 	<item
 		android:id="@+id/menu_item_open_pager_fragment"
 		android:icon="@drawable/ic_telescope"
-		app:showAsAction="always"
-		android:title="" />
+		android:title=""
+		app:showAsAction="always" />
 	
 	<item
 		android:id="@+id/menu_item_open_themes_fragment"
 		android:title="Themes" />
+	
+	<item
+		android:id="@+id/menu_item_constraint_activity"
+		android:title="Constraint" />
+	
+	<item
+		android:id="@+id/menu_item_collapsing_toolbar_activity"
+		android:title="Collapsing Toolbar" />
+	
+	<item
+		android:id="@+id/menu_item_motion_layout_activity"
+		android:title="Motion Layout" />
+	
+	<item
+		android:id="@+id/menu_item_transition_animation_activity"
+		android:title="Transition Animation" />
+	
+	<item
+		android:id="@+id/menu_item_object_animator_activity"
+		android:title="Object Animator" />
+	
+	<item
+		android:id="@+id/menu_item_recycler_activity"
+		android:title="Recycler" />
+	
+	<item
+		android:id="@+id/menu_item_to_do_list_activity"
+		android:title="ToDoList" />
+
 
 </menu>
