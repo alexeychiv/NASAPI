@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import gb.android.nasapi.BuildConfig
-import gb.android.nasapi.domain.Earth.GetEarthUseCase
+import gb.android.nasapi.domain.earth.GetEarthUseCase
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 

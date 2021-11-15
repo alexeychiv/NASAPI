@@ -47,6 +47,10 @@
 	<item
 		android:id="@+id/menu_item_to_do_list_activity"
 		android:title="ToDoList" />
+	
+	<item
+		android:id="@+id/menu_item_fonts_activity"
+		android:title="Fonts" />
 
 
 </menu>

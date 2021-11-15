@@ -35,6 +35,11 @@
 		
 		<activity android:name="gb.android.hw6.recycler.RecyclerActivity" />
 		<activity android:name="gb.android.hw6.todolist.ToDoListActivity" />
+		<activity android:name="gb.android.hw7.FontsActivity" />
+		
+		<meta-data
+			android:name="preloaded_fonts"
+			android:resource="@array/preloaded_fonts" />
 	
 	</application>
 

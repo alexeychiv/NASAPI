@@ -1,6 +1,6 @@
 package gb.android.nasapi.presentation.pager.earth
 
-import gb.android.nasapi.domain.Earth.EarthDomainDataModel
+import gb.android.nasapi.domain.earth.EarthDomainDataModel
 
 sealed class EarthState {
     object Loading : EarthState()

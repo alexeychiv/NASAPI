@@ -2,8 +2,13 @@ package gb.android.nasapi.presentation.apod
 
 import android.animation.ObjectAnimator
 import android.content.Intent
+import android.graphics.Typeface
 import android.net.Uri
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.style.ForegroundColorSpan
+import android.text.style.StyleSpan
 import android.view.*
 import android.view.animation.DecelerateInterpolator
 import android.widget.LinearLayout
@@ -16,6 +21,7 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import gb.android.nasapi.R
 import gb.android.nasapi.databinding.FragmentApodBinding
+import gb.android.nasapi.presentation.utils.getColorFromAttr
 
 class ApodFragment : Fragment() {
 
@@ -30,7 +36,7 @@ class ApodFragment : Fragment() {
     // VIEW MODEL
 
     private val viewModel by lazy(LazyThreadSafetyMode.NONE) {
-        ViewModelProvider(this, ApodViewModelFactory())
+        ViewModelProvider(this, ApodViewModelFactory(requireActivity().applicationContext))
             .get(ApodViewModel::class.java)
     }
 
@@ -170,7 +176,22 @@ class ApodFragment : Fragment() {
         if (title != null)
             if (explanation != null) {
                 binding.bottomSheet.bottomSheetContainer.visibility = View.VISIBLE
-                binding.bottomSheet.bottomSheetDescriptionHeader.text = title
+
+                val spannableTitle = SpannableString(title)
+
+                spannableTitle.setSpan(
+                    ForegroundColorSpan(requireContext().getColorFromAttr(R.attr.colorPrimary)),
+                    0, title.length,
+                    Spanned.SPAN_INCLUSIVE_INCLUSIVE
+                )
+                spannableTitle.setSpan(
+                    StyleSpan(Typeface.BOLD),
+                    0, title.length,
+                    Spanned.SPAN_INCLUSIVE_INCLUSIVE
+                )
+
+                binding.bottomSheet.bottomSheetDescriptionHeader.text = spannableTitle
+
                 binding.bottomSheet.bottomSheetExplanation.text = explanation
             }
     }

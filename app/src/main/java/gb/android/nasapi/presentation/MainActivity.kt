@@ -12,6 +12,7 @@ import gb.android.hw5.ObjectAnimatorActivity
 import gb.android.hw5.TransitionAnimationActivity
 import gb.android.hw6.recycler.RecyclerActivity
 import gb.android.hw6.todolist.ToDoListActivity
+import gb.android.hw7.FontsActivity
 import gb.android.nasapi.App
 import gb.android.nasapi.R
 import gb.android.nasapi.presentation.apod.ApodFragment
@@ -95,6 +96,11 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.menu_item_to_do_list_activity -> {
                 val intent = Intent(this, ToDoListActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.menu_item_fonts_activity -> {
+                val intent = Intent(this, FontsActivity::class.java)
                 startActivity(intent)
                 true
             }

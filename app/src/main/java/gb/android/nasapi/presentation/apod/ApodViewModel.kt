@@ -22,6 +22,9 @@ class ApodViewModel(
 
     //COROUTINE EXCEPTION HANDLER
     private val handler = CoroutineExceptionHandler { _, exception ->
+
+        //TODO: exception handling by type
+
         liveDataToObserveMutable.value = ApodState.Error(Throwable(exception.message))
     }
 

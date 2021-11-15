@@ -3,8 +3,8 @@ package gb.android.nasapi.data
 import gb.android.nasapi.BuildConfig
 import gb.android.nasapi.data.api.EarthAPI
 import gb.android.nasapi.data.models.EarthData
-import gb.android.nasapi.domain.Earth.EarthDomainDataModel
-import gb.android.nasapi.domain.Earth.EarthRepository
+import gb.android.nasapi.domain.earth.EarthDomainDataModel
+import gb.android.nasapi.domain.earth.EarthRepository
 
 class EarthRepositoryImpl(
     private val earthAPI: EarthAPI
