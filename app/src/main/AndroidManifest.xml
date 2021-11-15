@@ -17,7 +17,7 @@
 		android:usesCleartextTraffic="true">
 		
 		<activity
-			android:name=".presentation.MainActivity"
+			android:name=".presentation.SplashActivity"
 			android:exported="true">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
@@ -25,6 +25,8 @@
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
+		
+		<activity android:name="gb.android.nasapi.presentation.MainActivity" />
 		
 		<activity android:name="gb.android.hw4.ConstraintActivity" />
 		<activity android:name="gb.android.hw4.CollapsingToolBarActivity" />
@@ -35,6 +37,7 @@
 		
 		<activity android:name="gb.android.hw6.recycler.RecyclerActivity" />
 		<activity android:name="gb.android.hw6.todolist.ToDoListActivity" />
+		
 		<activity android:name="gb.android.hw7.FontsActivity" />
 		
 		<meta-data
